@@ -1,0 +1,49 @@
+section .active{
+    background: #dc8e00 !important;
+    border: 1px solid #9a6400 !important;
+}
+
+.image{
+    width: 30%;
+    float: left;
+    margin-right: 16px;
+}
+
+.card-sh{
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, .3);
+    margin-top: 20px;
+
+}
+
+.img{
+    width: 100%;
+}
+
+h4{
+    font-size: 21px;
+}
+
+.navbar-brand:hover {
+    color: red !important;
+    font-weight:bold;
+}
+
+.nav-item:hover {
+    color: red !important;
+    font-weight:bold;
+}
+
+.cat_font {
+   font-size: 11px;
+}
+
+.title_font {
+    font-size: 11px !important;
+    font-weight:bold !important;
+    margin-top: 15px;
+}
+
+.btn_font {
+    font-size: 13px !important;
+    font-weight:bold !important;
+}

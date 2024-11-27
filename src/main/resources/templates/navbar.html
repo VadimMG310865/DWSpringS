@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="menu">
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}" >Главная</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" >
+      <ul class="navbar-nav" >
+        <th:block th:if="${user==null}">
+          <li class="nav-item" >
+            <a class="nav-link active" aria-current="page" th:href="@{/}" >Домашняя страница</a>
+          </li>
+        </th:block>
+        <th:block th:unless="${user==null}">
+          <li class="nav-item" th:if="${user.role=='ROLE_ADMIN'}">
+            <a class="nav-link" th:href="@{/admin/}" th:text="${user.name}"></a>
+          </li>
+          <li class="nav-item" th:if="${user.role=='ROLE_USER'}">
+            <a class="nav-link" th:href="@{/}" th:text="${user.name}"></a>
+          </li>
+        </th:block>
+        <th:block th:if="${user!=null}">
+          <li class="nav-item" th:if="${user.role=='ROLE_USER'}">
+            <a class="nav-link" th:href="@{/user/profile}">Профиль</a>
+          </li>
+          <li class="nav-item" th:if="${user.role=='ROLE_ADMIN'}">
+            <a class="nav-link" th:href="@{/admin/profile}">Профиль</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/logout}" >Выход</a>
+          </li>
+        </th:block>
+        <th:block th:if="${user==null}">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/register}">Регистрация</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/signin}">Вход</a>
+          </li>
+        </th:block>
+      </ul>
+    </div>
+  </div>
+</nav>

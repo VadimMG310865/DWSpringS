@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card card-sh">
+                    <div class="card-header text-center fs-4">Добавление поста
+                        <th:block th:if="${session.succMsg}">
+                            <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+                            <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                        <th:block th:if="${session.errorMsg}">
+                            <p th:text="${session.errorMsg}" class="text-danger fw-bold text-center mt-4"></p>
+                            <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/admin/savePost" method="post" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                Название поста <input type="text" name="title" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                Содержание поста
+                                <textarea name="content" cols="" rows="3" class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                Категория
+                                <select name="category" class="form-control">
+                                    <option>--select--</option>
+                                    <option th:each="c:${categories}" th:text="${c.name}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                Загузить изображение
+                                <input type="file" name="file" class="form-control">
+                            </div>
+                            <button class="btn btn-primary col-md-12">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

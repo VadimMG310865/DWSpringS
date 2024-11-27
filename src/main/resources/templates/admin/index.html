@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section>
+  <div class="container p-5">
+    <p class="text-center fs-3 mt-4">Панель администратора</p>
+
+    <div class="row p-5">
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2 ">
+        <a href="/admin/loadAddItem" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+              <img src="/img/icon/1.jpg" class="img" alt="">
+              <h4>Добавить пост</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/admin/category" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+              <img src="/img/icon/2.jpg" class="img" alt="">
+              <h4>Добавить категорию</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/admin/items" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-success">
+              <img src="/img/icon/3.jpg" class="img" alt="">
+              <h4>Список постов</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/admin/users" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+              <img src="/img/icon/4.jpg" class="img" alt="">
+              <h4>Пользователи</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/admin/add-admin" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-warning">
+              <img src="/img/icon/5.jpg" class="img" alt="">
+              <h4>Добавить администратора</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/admin/profile" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+              <img src="/img/icon/6.jpg" class="img" alt="">
+              <h4>Администратор</h4>
+            </div>
+          </div>
+        </a>
+     </div>
+<!-- ====================================================================== -->
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card card-sh">
+                    <div class="card-header text-center fs-4">Редактирование поста
+                        <th:block th:if="${session.succMsg}">
+                            <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+                            <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                        <th:block th:if="${session.errorMsg}">
+                            <p th:text="${session.errorMsg}" class="text-danger fw-bold text-center mt-4"></p>
+                            <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/admin/updatePost" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" th:value="${post.id}">
+                            <div class="mb-3">
+                                Измените заголовок <input type="text" name="title" th:value="${post.title}" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                Измените содержание
+                                <textarea name="content" cols="" rows="3" class="form-control">[[${post.content}]]</textarea>
+                            </div>
+                            <div class="mb-3">
+                                Измените категорию
+                                <select name="category" class="form-control">
+                                    <option>[[${post.category}]]</option>
+                                    <option th:each="c:${categories}" th:text="${c.name}"></option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                Измените изображение
+                                <input type="file" name="file" class="form-control">
+                            </div>
+                            <div class="mb-3" >
+                               <img th:src="@{'/img/post_img/'+${post.image}}" alt="" width="200">
+<!--                                <img th:src="@{'/img/post_img/1_1.jpg'}" alt="" width="200">-->
+
+                            </div>
+                            <button class="btn btn-primary col-md-12">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
