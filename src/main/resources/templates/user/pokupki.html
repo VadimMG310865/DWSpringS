@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section class="rowkorz2">
+    <div class="container mt-4 strp1">
+        <div class="card card-sh strp2">
+            <div class="card-header text-center ">
+                <p class="fs-4 mt-4 strp">Список покупок</p>
+	            
+                <th:block th:if="${session.succMsg}">
+                    <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+                    <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.errorMsg}">
+                    <p th:text="${session.errorMsg}" class="text-danger fw-bold text-center mt-4"></p>
+                    <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <hr>
+                <div class="col-md-12 p-4 strp">
+	                <form method="get">
+		                
+<!--		                <div class="row">-->
+<!--			                <div class="col-md-6">-->
+<!--				                <input type="text" class="form-control" name="sdn" >-->
+<!--			                </div>-->
+<!--			                <div class="col-md-6">-->
+<!--				                <input type="text" class="form-control" name="sdk" >-->
+<!--			                </div>-->
+<!--		                </div>-->
+		                
+                        <div class="row">
+                            <div class="col-md-2"> Начало периода
+                                <input type="text" class="form-control" name="sdn" >
+                            </div>
+                            <div class="col-md-2"> Конец периода
+                                <input type="text" class="form-control" name="sdk" >
+                            </div>
+                            <div class="col-md-6"> Контекстный поиск
+                                <input type="text" class="form-control" name="ch">
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary btnfilt">Поиск</button>
+                            </div>
+                        </div>
+		                
+		                
+                    </form>
+                </div>
+
+            </div>
+            <div class="card-body vnkorz">
+                <table class="table">
+                    <tr>
+                        <th scope="col">N пп</th>
+	                    <th scope="col">Дата покупки</th>
+	                    <th scope="col">Категория товара</th>
+                        <th scope="col">Название товара</th>
+	                    <th scope="col">Цена товара(руб)</th>
+	                    <th scope="col">Количество товара(шт)</th>
+	                    <th scope="col">Стоимость товара(руб)</th>
+                     
+                    </tr>
+                    <tr th:each="p, c : ${posts}" th:if="${p.id_user == user.id}">
+                        <th th:text="${c.count}"></th>
+	                    <td th:text="${#dates.format(p.date, 'dd/MM/yyyy')}"></td>
+	                    <td th:text="${p.category}"></td>
+                        <td th:text="${p.name}"></td>
+	                    <td th:text="${p.price}"></td>
+	                    <td th:text="${p.kol}"></td>
+	                    <td th:text="${p.summa}"></td>
+                    </tr>
+                </table>
+	            <div class="itpokp">Сумма итого (руб):
+		            <input type="text"  class="itpok" name="its" th:value="${itsum}">
+	            </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -7,7 +7,6 @@ import org.springboot.diplomwork.repository.UserRepo;
 import org.springboot.diplomwork.service.ICategoryService;
 import org.springboot.diplomwork.service.IPostService;
 import org.springboot.diplomwork.service.IUserService;
-import org.springboot.diplomwork.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -66,7 +65,7 @@ public class HomeController {
 
     @GetMapping("/register")
     public String register() {
-        return "register";
+        return "register.html";
     }
 
     @GetMapping("/signin")
@@ -75,11 +74,12 @@ public class HomeController {
     }
 
 
-    @GetMapping("/user/home")
-    public String home() {
-        return "home";
+    @GetMapping("/onas")
+    public String onas() {
+        return "onas";
     }
 
+    // ================ загрузка формы регистрации ===============
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute User user, HttpSession session) {
         System.out.println(user);
@@ -92,14 +92,15 @@ public class HomeController {
         return "redirect:/register";
     }
 
+    // ========= загрузка формы с категориями и товарами на главной странице ==========
     @GetMapping("/item/{id}")
     public String item(@PathVariable int id, Model m){
         Post postById = postService.getPostById(id);
-        //System.out.println("Значение Post: " + postById.toString());
-        m.addAttribute("post", postById);
+         m.addAttribute("post", postById);
         return "view_item";
     }
 
+    // ========= загрузка формы с категориями и товарами на главной странице ==========
     @GetMapping("/search")
     public String searchItem(@RequestParam String ch, Model m) {
         List<Post> searchPosts = postService.searchPost(ch);

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section>
+	<div class="container">
+			<div class="col-md-8">
+				<div class="card card-sh">
+
+					<div class="card-header text-center">Моя корзина</div>
+					<th:block th:if="${session.succMsg}">
+						<p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+				
+				</div>
+			</div>
+	</div>
+</section>
+</body>
+</html>

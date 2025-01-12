@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section class="rowcard">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card card-sh">
+					<div class="card-header text-center">Банковские карты</div>
+					
+					<th:block th:if="${session.succMsg}">
+						<p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+					
+					<th:block th:if="${session.errorMsg}">
+						<p th:text="${session.errorMsg}" class="text-danger fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+					
+					<div class="card-body vnkorz">
+						<form action="/user/saveCard" method="post">
+							<input type="hidden" name="id_user" th:value="${user.id}">
+							<div class="mb-3">
+								Введите банк выдавший карту
+								
+								<select  name="num" class="form-control" >
+									<option>--Выбрать банк--</option>
+									<option value='"СБЕР банк"'>СБЕР банк</option>
+									<option  value='"ВТБ банк"'>ВТБ банк</option>
+									<option  value='"АЛЬФА банк"'>АЛЬФА банк</option>
+									<option  value='"ГАЗПРОМ банк"'>ГАЗПРОМ банк</option>
+								</select>
+								
+<!--								<input type="text" name="num" class="form-control">-->
+							</div>
+							<div class="mb-3">
+								Введите cумму средств на карте
+								<input type="text" name="summa" class="form-control">
+							</div>
+							
+							<button class="btn btn-primary col-md-12 btnprodkorz">Сохранить</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-md-8">
+				<div class="card card-sh">
+					<div class="card-header text-center">Просмотр карт</div>
+					<div class="card-body vnkorz">
+						<table class="table">
+							<tr>
+								<th scope="col">Номер карты</th>
+<!--								<th scope="col">ID_user</th>-->
+								<th scope="col">Сумма</th>
+								<th scope="col">Действия</th>
+							</tr>
+							<tr th:each="card : ${cards}" th:if="${card.id_user == user.id}">
+								<td th:text="${card.num}">Номер карты</td>
+<!--								<td th:text="${card.id_user}">ID_user</td>-->
+								<td th:text="${card.summa}">Сумма на карте</td>
+								<td>
+									<a th:href="@{'/user/loadEditCard/'+${card.id}}" class="btn btn-primary btn-sm btnprodkorz">Редактировать</a>
+									<a th:href="@{'/user/deleteCard/'+${card.id}}" class="btn btn-danger btn-sm ">Удалить</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</body>
+</html>

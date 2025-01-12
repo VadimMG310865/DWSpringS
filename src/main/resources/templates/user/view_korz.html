@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section class="vkorz1">
+	<div class="container">
+			<div class="col-md-6 offset-md-3 viewkorz ">
+			
+           <!--	===== Форма срдержание корзины ===================== -->
+			<div class="col-md-8 osnstr11">
+				<div class="card card-sh osnstr111">
+					<div class="card-header text-center">Моя корзина</div>
+					<div class="card-body vnkorz">
+						<table class="table">
+							<tr>
+								<th scope="col">Название товара</th>
+								<th scope="col">Цена товара</th>
+								<th scope="col">Количество</th>
+								<th scope="col">Стоимость</th>
+							</tr>
+
+							<tr th:each="kor : ${vkorz}" th:if="${kor.id_user == user.id}">
+								<td th:text="${kor.name}"></td>
+								<td th:text="${kor.price}"></td>
+								<td th:text="${kor.kol}"></td>
+								<td th:text="${kor.kol} * ${kor.price}"></td>
+							</tr>
+						</table>
+						
+						<div class="mb-3">
+							<!--								<input type="hidden" name="id_user" th:value="${user.id}">-->
+<!--							<input type="text" name="nuser" th:value="${user.name}">-->
+							<input type="hidden" name="nuser" >
+						</div>
+						
+<!--						<div class="mb-3">К оплате:-->
+<!--							<input type="text" name="it" th:value="${itog}">-->
+<!--						</div>-->
+						
+<!--						<div class="col-md-8 offset-md-2">-->
+<!--							<form action="/user/view_korz_opl" method="get">-->
+<!--								<div class="input-group">-->
+<!--									<button  class="btn btn-light text-dark ms-3">Оплатить</button>-->
+<!--								</div>-->
+<!--							</form>-->
+<!--						</div>-->
+						
+						
+					</div>
+				</div>
+			</div>
+			<!-- ===== Конец формы срдержание корзины ===================== -->
+<!--				</div>-->
+			</div>
+
+	</div>
+</section>
+</body>
+</html>

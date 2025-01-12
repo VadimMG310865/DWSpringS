@@ -11,37 +11,16 @@
 
 
 <section>
-    <div class="container-fluid bg-warning p-3"> <!-- bg-warning  -->
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <form action="search" method="get">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="ch">
-                        <button class="btn btn-light text-dark ms-3">Search</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid mt-1">
+	
+    <div class="container-fluid mt-1 osnstr">
         <div class="row">
             <div class="col-md-2">
                 <div class="card shadow-sm p3 mb-5 bg-body-tertiary rounded">
-                    <div class="card-body">
+                    <div class="card-body vnkorz">
 
                         <p class="fs-5">Катогории</p>
-                        <div class="list-group">
 
-<!--                            <a href="/"-->
-<!--                               class="list-group-item list-group-item-action"-->
-<!--                               aria-current="true"-->
-<!--                               th:classappend="${paramValue == ''} ? 'active' : ''"-->
-<!--                            >-->
-<!--                                Все-->
-<!--                            </a>-->
-<!--                        -->
-<!--                        <div class="list-group"> &lt;!&ndash; добавить &ndash;&gt;-->
+                        <div class="list-group">
 
                             <a href="/" class="list-group-item list-group-item-action" aria-current="true"
                              th:classappend="${paramValue == ''} ? 'active' : ''">
@@ -58,33 +37,56 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10">
-                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-                    <div class="card-body">
-                        <p class="fs-3 text-center">Блог</p>
+	        
+            <div class="col-md-10 strp3">
+                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded vnkorz strp3">
+                    <div class="card-body strp3">
+                        <p class="fs-3 text-center strp3" >Товары</p>
+
                         <div class="row">
                           <th:block th:if="${postsSize > 0}">
                             <div class="col-md-3 mb-3" th:each="p:${posts}">
                                 <div class="card">
                                     <div class="card-body text-center">  <!-- добавить -->
                                         <img th:src="@{'/img/post_img/'+${p.image}}" alt="" width="100%">
-                                        <p class="fs-5 text-center title_font" th:text="${p.title}"></p>
+                                        <p class="fs-5 text-center title_font strp4" th:text="${p.title} "></p>
+	                                    <p class="fs-5 text-center title_font strp4" th:text="${p.price}+ ' руб'"></p>
                                         <div class="row text-center">
-                                            <a th:href="@{'/item/'+${p.id}}" class="btn btn-warning col-md-6 offset-md-3 btn_font">Подробнее</a>
+                                            <a th:href="@{'/item/'+${p.id}}" class="btn btn-warning col-md-6 offset-md-3 btn_font btn_p " >Подробнее</a>
                                         </div>
+
+<!-- ==============================================================================================================  -->
+<!-- ================= делаем видимой кнопку "В корзину" дя зарегистрированных пользователей ======================  -->
+<!-- ==============================================================================================================  -->
+<!--		                                    <div class="row text-center " th:if="${user==null}">-->
+<!--			                                    <a th:href="@{'/item/'+${p.id}}" class="btn btn-warning col-md-6 offset-md-3 btn_font btn_p corz" >Зарегистрируйтесь</a>-->
+<!--		                                    </div>-->
+	                                    
+		                                    <div class="row text-center " th:if="${user!=null}">
+			                                    <div class="mb-3" >
+				                                    <input type="hidden" name="user" th:value="${user.name}">
+			                                    </div>
+			                                    <p class="fs-5 text-center title_font strp4" th:text="${'в наличии: ' + p.ost}+ ' шт'"></p>
+                                    
+			                                    <a th:href="@{'user/korz/'+${p.id}}" class="btn btn-warning col-md-6 offset-md-3 btn_font btn_p " >В корзину</a>
+		                                    </div>
+<!-- ==============================================================================================================  -->
+<!-- ==============================================================================================================  -->
+<!-- ==============================================================================================================  -->
+
                                     </div>
                                 </div>
                             </div>
                           </th:block>
                             <th:block th:unless="${postsSize > 0}">
-                                <p class="fs-4 text-center nt-4 text-success">В этой категории нет постов</p>
+                                <p class="fs-4 text-center nt-4 text-success">В этой категории нет товаров</p>
                             </th:block>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">Все посты: <span th:text="${totalElements}"></span></div>
+                    <div class="col-md-4 vsetov">Все товары: <span th:text="${totalElements}"></span></div>
                     <div class="col-md-6">
 
                       <th:block th:if="${totalPages > 1}">

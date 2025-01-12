@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-4">
+                <div class="card card-sh">
+                    <div class="card-header text-center">Редактирование товара</div>
+
+                    <div class="card-body">
+                        <form action="/user/updateKorz" method="post">
+                            <input type="hidden" name="id" th:value="${prkorz.id}">
+                            <div class="mb-3">
+	                            
+	                            <div class="mb-3">В наличии (шт):
+		                            <input  type="text" name="ost" th:value="${edost}">
+	                            </div>
+	                            
+                                Измените количество
+                                <label>
+                                    <input type="number" min = "0" name="kol" class="form-control" th:value="${prkorz.kol}">
+                                </label>
+                            </div>
+                            <button class="btn btn-primary col-md-12">Обновить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

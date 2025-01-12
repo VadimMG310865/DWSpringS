@@ -5,7 +5,7 @@
   <title>Title</title>
 </head>
 <body>
-<section>
+<section class="rowkorz">
   <div class="container p-3">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -17,7 +17,7 @@
           <th:block th:if="${param.logout}">
             <p class="text-center text-success fs-5">Вы вышли из профиля</p>
           </th:block>
-          <div class="card-body">
+          <div class="card-body spkorz">
             <form action="userLogin" method="post">
               <div class="mb-3">
                 <p>
@@ -29,7 +29,7 @@
                   Password: <input type="password" name="password" class="form-control">
                 </p>
               </div>
-              <p><button class="btn btn-primary col-md-12">Login</button></p>
+              <p><button class="btn btn-primary col-md-12 btnprodkorz">Вход</button></p>
             </form>
           </div>
         </div>

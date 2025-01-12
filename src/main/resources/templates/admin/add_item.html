@@ -5,12 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<section>
+<section  class="rowkorz">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card card-sh">
-                    <div class="card-header text-center fs-4">Добавление поста
+                    <div class="card-header text-center fs-4">Добавление товара
                         <th:block th:if="${session.succMsg}">
                             <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
                             <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
@@ -23,28 +23,37 @@
 
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body vnkorz">
                         <form action="/admin/savePost" method="post" enctype="multipart/form-data">
 
-                            <div class="mb-3">
-                                Название поста <input type="text" name="title" class="form-control">
+                            <div class=" edpr">
+                                Название товара <input type="text" name="title" class="form-control">
                             </div>
-                            <div class="mb-3">
-                                Содержание поста
-                                <textarea name="content" cols="" rows="3" class="form-control"></textarea>
+	                        
+	                        <div class=" edpr">
+		                        Цена товара <input type="text" name="price" class="form-control">
+	                        </div>
+	                        
+	                        <div class="edpr">
+		                        Остаток товара <input type="text" name="ost" class="form-control">
+	                        </div>
+	                        
+                            <div class="edpr">
+                                Описание товара
+                                <textarea name="content" cols="" rows="1" class="form-control"></textarea>
                             </div>
-                            <div class="mb-3">
+                            <div class="edpr">
                                 Категория
                                 <select name="category" class="form-control">
                                     <option>--select--</option>
                                     <option th:each="c:${categories}" th:text="${c.name}"></option>
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            <div class="edpr">
                                 Загузить изображение
                                 <input type="file" name="file" class="form-control">
                             </div>
-                            <button class="btn btn-primary col-md-12">Сохранить</button>
+                            <button class="btn btn-primary col-md-12 btnprodkorz">Сохранить</button>
                         </form>
                     </div>
                 </div>

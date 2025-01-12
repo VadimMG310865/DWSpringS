@@ -19,6 +19,28 @@ public class Post {
 
     private String image;
 
+    private int price;
+
+    private int ost;
+
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getOst() {
+        return ost;
+    }
+
+    public void setOst(int ost) {
+        this.ost = ost;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -58,6 +80,8 @@ public class Post {
     public void setImage(String image) {
         this.image = image;
     }
+
+
 
     @Override
     public String toString() {

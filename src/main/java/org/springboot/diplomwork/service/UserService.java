@@ -1,6 +1,7 @@
 package org.springboot.diplomwork.service;
 
 import jakarta.servlet.http.HttpSession;
+import org.springboot.diplomwork.entity.Post;
 import org.springboot.diplomwork.entity.User;
 import org.springboot.diplomwork.repository.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,4 +37,5 @@ public class UserService implements IUserService {
         session.removeAttribute("succMsg");
         session.removeAttribute("errorMsg");
     }
+
 }

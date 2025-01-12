@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section class="rowkorz">
+	<div class="container">
+		<div class="row ">
+			<div class="col-md-4">
+				<div class="card card-sh">
+					<div class="card-header text-center">Положить товар в корзину</div>
+					
+					<th:block th:if="${session.succMsg}">
+						<p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+					
+					<th:block th:if="${session.errorMsg}">
+						<p th:text="${session.errorMsg}" class="text-danger fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+					
+					<!--===== Форма внос продукта в корзину ===================== -->
+					<div class="card-body vnkorz">
+						<form action="/user/saveKorz" method="post">
+							<div class="mb-3 ">Категория товара:
+								<input class="corz1" type="text" name="category" th:value="${post.category}">
+							</div>
+							<div class="mb-3">Наименование товара:
+								<input class="corz1" type="text" name="name" th:value="${post.title}">
+							</div>
+
+							<div class="mb-3" >
+								<input type="hidden" name="id_prod" th:value="${post.id}">
+							</div>
+							<div class="mb-3">Цена товара (руб):
+								<input class="corz1" type="text" name="price" th:value="${post.price}">
+							</div>
+							
+							<div class="mb-3">
+								<input type="hidden" name="id_user" th:value="${user.id}">
+							</div>
+							<div class="mb-3">
+								<input type="hidden" name="user" th:value="${user.name}">
+							</div>
+		
+							<div class="mb-3">В наличии (шт):
+								<input class="corz1" type="text" name="ost" th:value="${post.ost}">
+							</div>
+							
+							<div class="mb-3"> Указать количество (шт):
+<!--								<input type="number" min = "1" placeholder="1" class="form-control corz1" name="kol" th:value="1" >-->
+								<input type="number" min = "1" placeholder="1" class="corz11" name="kol" th:value="1" >
+							</div>
+						
+							<div class="col">
+								<button class="btn btn-primary col-md-12 btnprodkorz">Положить в корзину</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+           <!--	===== Форма содержание корзины ===================== -->
+			<div class="col-md-8">
+				<div class="card card-sh">
+					<div class="card-header text-center">Корзина</div>
+					<div class="card-body spkorz">
+						<table class="table">
+							<tr>
+								<th scope="col" class="thtable">Название товара</th>
+								<th scope="col" class="thtable">Цена товара</th>
+								<th scope="col" class="thtable">Количество</th>
+								<th scope="col" class="thtable">Стоимость</th>
+     						</tr>
+
+							<tr th:each="kor : ${korzs}" th:if="${kor.id_user == user.id}">
+								<td th:text="${kor.name}"></td>
+								<td th:text="${kor.price}"></td>
+								<td th:text="${kor.kol}"></td>
+								<td th:text="${kor.kol} * ${kor.price}"></td>
+								
+								<td>
+     								<a th:href="@{'/user/loadEditProdKorz/'+${kor.id}}" class="btn btn-primary btn-sm btnprodkorz">Редактировать</a>
+									<a th:href="@{'/user/deleteProdKorz/'+${kor.id}}" class="btn btn-danger btn-sm">Удалить</a>
+								</td>
+							</tr>
+						</table>
+<!--						<div class="mb-3">Итого к оплате (руб):-->
+<!--&lt;!&ndash;							<input class="corz1" type="text" name="it" th:value="${itog}">&ndash;&gt;-->
+<!--							<input class="corz1" type="text" name="it" th:text="${session.itog}">-->
+<!--							-->
+<!--						</div>-->
+
+						
+						
+<!-- ============================================================================================ -->
+<!-- =============== элементы формы для ввода имени пользователя для оплаты ===================== -->
+<!-- ============================================================================================ -->
+
+						
+						<div class="col-md-8 offset-md-2">
+							<form action="/user/oplkorz" method="get">
+								<div class="mb-3">
+									<input type="hidden" name="knus" th:value="${user.name}">
+								</div>
+								<div class="input-group">
+									<button class="btn btn-primary col-md-12 btnprodkorz">Выбрать карту для оплаты</button>
+								</div>
+							</form>
+						</div>
+						
+<!-- ============================================================================================ -->
+<!-- ======== конец элементы формы для ввода имени пользователя для оплаты  ===================== -->
+<!-- ============================================================================================ -->
+					
+					
+					
+					</div>
+				</div>
+			</div>
+			<!-- ===== Конец формы срдержание корзины ===================== -->
+		</div>
+	</div>
+</section>
+</body>
+</html>

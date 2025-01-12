@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section class="vkorz1">
+	<div class="container">
+		<div class="col-md-6 offset-md-3 viewkorz">
+			
+			
+			<!--	===== Форма срдержание корзины ===================== -->
+			<div class="col-md-8">
+				<div class="card card-sh osnstr osnstr111">
+					<div class="card-header text-center">Изменение параметров для оплаты корзины</div>
+<!--					<th:block th:if="${session.succMsg}">-->
+<!--						<p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>-->
+<!--						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>-->
+<!--					</th:block>-->
+					<div class="card-body vnkorz">
+						
+
+						
+						<!-- ============================================================================================ -->
+						<!-- =============== элементы формы для выбора карты для оплаты ================================= -->
+						<!-- ============================================================================================ -->
+
+						<a href="/user/card" class="btn btn-primary col-md-12 btnprodkorz btnprodkorz1">Пополнить счет карты</a>
+				        <a href="/user/korz/30" class="btn btn-primary col-md-12 btnprodkorz">Уменьшить сумму оплаты в корзине</a>
+					
+					</div>
+				</div>
+			</div>
+			<!-- ===== Конец формы содержание корзины ===================== -->
+
+	    </div>
+	</div>
+</section>
+</body>
+</html>

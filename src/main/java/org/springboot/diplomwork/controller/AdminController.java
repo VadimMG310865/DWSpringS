@@ -47,6 +47,7 @@ public class AdminController {
         }
     }
 
+    // ============= загрузка профиля администратора ============
     @GetMapping("/profile")
     public String profile(Principal principal, Model model) {
         String email = principal.getName();
@@ -54,25 +55,21 @@ public class AdminController {
         model.addAttribute("user", user);
         return "admin/profile";
     }
-
+    // ================ загрузка основной страницы ==============
     @GetMapping("/")
     public String index(){
         return "admin/index";
     }
 
-    @GetMapping("/loadAddItem")
-    public String loadAddItem(Model m) {
-        List<Category> categories = categoryService.getAllCategory();
-        m.addAttribute("categories", categories);
-        return "admin/add_item";
-    }
 
+    // ========= КАТЕГОРИИ ==============================================
+    // ================ загрузка формы для создания новой категории ==============
     @GetMapping("/category")
     public String category(Model m){
         m.addAttribute("categories", categoryService.getAllCategory());
         return "admin/category";
     }
-
+    // ================ создание и сохранение новой категории =======================
     @PostMapping("/saveCategory")
     public String saveCategory(@ModelAttribute Category category, HttpSession session){
         Boolean existCategory = categoryService.existCategory(category.getName());
@@ -89,6 +86,7 @@ public class AdminController {
         return "redirect:/admin/category";
     }
 
+    // ================ удаление выбраной категории =================================
     @GetMapping("/deleteCategory/{id}")
     public String deleteCategory(@PathVariable int id, HttpSession session){
         Boolean deleteCategory = categoryService.deleteCategory(id);
@@ -100,12 +98,14 @@ public class AdminController {
         return "redirect:/admin/category";
     }
 
+    // ================ загрузка формы для редактирования категории ==============
     @GetMapping("/loadEditCategory/{id}")
     public String loadEditCategory(@PathVariable int id, Model m) {
         m.addAttribute("category", categoryService.getCategoryById(id));
         return "admin/edit_category";
     }
 
+    // ================ редактирование выбраной категории =================================
     @PostMapping("/updateCategory")
     public String updateCategory(@ModelAttribute Category category, HttpSession session) {
         Category oldCategory = categoryService.getCategoryById(category.getId());
@@ -120,7 +120,18 @@ public class AdminController {
         }
         return "redirect:/admin/category";
     }
+    //============================ КОНЕЦ КАТЕГОРИИ ======================================
 
+    // ==================================================================================
+    // ============================ ТОВАРЫ ==============================================
+    // ================ загрузка формы для создания нового товара =======================
+    @GetMapping("/loadAddItem")
+    public String loadAddItem(Model m) {
+        List<Category> categories = categoryService.getAllCategory();
+        m.addAttribute("categories", categories);
+        return "admin/add_item";
+    }
+    // ================ создание и сохранение нового товара =======================
     @PostMapping("/savePost")
     public String savePost(@ModelAttribute Post post, HttpSession session, @RequestParam("file") MultipartFile image) throws IOException {
         String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
@@ -128,7 +139,6 @@ public class AdminController {
 
         Post savePost = postService.savePost(post);
         if (savePost != null) {
-//            String saveFile = new SslProperties.Bundles.Watch.File("src/main/resources/static/img").getAbsolutePath();
             String saveFile = new File("src/main/resources/static/img").getAbsolutePath();
             System.out.println(saveFile);
             if (!image.isEmpty()) {
@@ -137,13 +147,13 @@ public class AdminController {
 
                 Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
-            session.setAttribute("succMsg", "Пост сохранен успешно");
+            session.setAttribute("succMsg", "Товар сохранен успешно");
         } else {
             session.setAttribute("errorMsg", "Ошибка сохранения поста");        }
         return "redirect:/admin/loadAddItem";
     }
 
-
+    // ================ загрузка формы для отображения товаров =======================
     @GetMapping("/items")
     public String loadViewPost(Model m, @RequestParam(defaultValue = "") String ch) {
         List<Post> posts = null;
@@ -155,18 +165,18 @@ public class AdminController {
         m.addAttribute("posts", posts);
         return "admin/items";
     }
-
+    // ================ удаление выбраного товара ====================================
     @GetMapping("/deleteItem/{id}")
     public String deleteItem(@PathVariable int id, HttpSession session) {
         Boolean deletePost = postService.deletePost(id);
         if (deletePost) {
-            session.setAttribute("succMsg", "Пост удален успешно");
+            session.setAttribute("succMsg", "Товар удален успешно");
         } else {
             session.setAttribute("errorMsg", "Ошибка удаления поста");
         }
         return "redirect:/admin/items";
     }
-
+    // ============== загрузка формы для редактирования выбраного товара =================
     @GetMapping("/editItem/{id}")
     public String editItem(@PathVariable int id, Model m) {
         m.addAttribute("post", postService.getPostById(id));
@@ -174,18 +184,29 @@ public class AdminController {
         return "admin/edit_items";
     }
 
-
+    // ================ редактирование выбраного товара =================================
     @PostMapping("/updatePost")
-    public String updatePost(@ModelAttribute Post post, HttpSession session, @RequestParam("file") MultipartFile image) throws IOException {
 
+    public String updatePost(@ModelAttribute Post post, HttpSession session, Model m,@RequestParam("file") MultipartFile image) throws IOException {
         Post updatePost = postService.updatePost(post, image);
-        if(!ObjectUtils.isEmpty(updatePost)) {
-            session.setAttribute("succMsg", "Пост обновлен успешно");
-        } else {
-            session.setAttribute("errorMsg", "Ошибка при обновлении поста");
-        }
 
-        return "redirect:/admin/editItem/" + post.getId();
+        // ============== прежний код (если что вернуть) ====================
+//        if(!ObjectUtils.isEmpty(updatePost)) {
+//            session.setAttribute("succMsg", "Пост обновлен успешно");
+//        } else {
+//            session.setAttribute("errorMsg", "Ошибка при обновлении поста");
+//        }
+        //return "redirect:/admin/editItem/" + post.getId();
+        // ===============================================
+        // ============== новый код ======================
+        List<Post>posts = postService.getAllPosts();
+
+        m.addAttribute("posts", posts);
+
+        return "admin/items";
+
+        // ===============================================
     }
+    //============================ КОНЕЦ ТОВАРЫ =========================================
 
 }

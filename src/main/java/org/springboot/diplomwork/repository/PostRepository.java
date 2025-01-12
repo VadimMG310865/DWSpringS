@@ -16,4 +16,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     Page<Post> findByCategory(Pageable pageable, String category);
 
     Page<Post> findAllBy(Pageable pageable);
+
+
 }

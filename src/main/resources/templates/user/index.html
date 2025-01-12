@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<section class="rowindus">
+  <div class="container p-5">
+    <p class="text-center fs-3 mt-4 ppol">Панель пользователя</p>
+
+    <div class="row p-3">
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2 ">
+        <a href="/user/card" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+             <img src="/img/icon/1.jpg" class="img" alt="">
+              <h4 class="podp">Мои банковские карты</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ====================================================================== -->
+      <div class="col-md-4 mt-2">
+        <a href="/user/view_korz" class="text-decoration-none">
+          <div class="card card-sh">
+            <div class="card-body text-center text-primary">
+              <img src="/img/icon/3.jpeg" class="img" alt="">
+              <h4 class="podp">Моя корзина</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+<!-- ======================================================================-->
+      <div class="col-md-4 mt-2">
+	    <a th:href="@{'/user/pokupki/'+${user.name}}" class="text-decoration-none">
+<!--	    <a href="/user/pokupki" class="text-decoration-none">-->
+          <div class="card card-sh">
+            <div class="card-body text-center text-success">
+              <img src="/img/icon/2.jpg" class="img" alt="">
+              <h4 class="podp">Мои покупки</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+ ======================================================================
+
+    </div>
+  </div>
+</section>
+</body>
+</html>

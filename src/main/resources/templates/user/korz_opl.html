@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::layout(~{::section})}">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<section class="vkorz1">
+	<div class="container">
+		<div class="col-md-6 offset-md-3 viewkorz">
+			
+			
+			<!--	===== Форма срдержание корзины ===================== -->
+			<div class="col-md-8">
+				<div class="card card-sh osnstr osnstr111">
+					<div class="card-header text-center">ОПЛАТА КОРЗИНЫ</div>
+					<th:block th:if="${session.succMsg}">
+						<p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
+						<th:block th:text="${@userService.removeSessionMessage()}"></th:block>
+					</th:block>
+					<div class="card-body vnkorz">
+						
+						<div class="mb-3">Итого к оплате:
+							<input type="text" name="it" th:value="${itog}">
+						</div>
+						
+						
+						<!-- ============================================================================================ -->
+						<!-- =============== элементы формы для выбора карты для оплаты ================================= -->
+						<!-- ============================================================================================ -->
+						<div class="mb-3">
+							<h4> Карта для оплаты </h4>
+							<div class="oplcard">
+							    <div  class="nb"> Карта</div>
+								<div class="csum" > Сумма на счету</div>
+			                </div>
+
+						</div>
+					
+						<!-- ============================================================================================ -->
+						<!-- =============== конец элементы формы для выбора карты для оплаты =========================== -->
+						<!-- ============================================================================================ -->
+						
+						<form action="/user/opltovkorz" method="get">
+							
+							<div class="mb-3">
+								<input type="hidden" name="uskorz" th:value="${nkorz}">
+     						</div>
+							<div class="mb-3">
+								<input type="hidden" name="ito" th:value="${itog}">
+							</div>
+							
+							
+							<select  name="card" class="form-control" >
+								<option>--Выбрать карту для оплаты--</option>
+<!--								<option th:each="c:${cards}" th:text="${c.num}+''+${c.summa}+''+${c.num}+''+${c.id}"  th:value="${c.id}"  th:if="${c.id_user == user.id}"></option>-->
+								<option th:each="c:${cards}" th:text="${c.num}+''+${c.summa}"  th:value="${c.id}"  th:if="${c.id_user == user.id}"></option>
+
+							</select>
+							
+							
+
+							<div class="input-group batopl">
+								<button class="btn btn-primary col-md-12 btnprodkorz">Оплатить</button>
+							</div>
+						</form>
+						
+						
+					</div>
+				</div>
+			</div>
+			<!-- ===== Конец формы срдержание корзины ===================== -->
+
+	    </div>
+	</div>
+</section>
+</body>
+</html>

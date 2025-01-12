@@ -3,6 +3,47 @@ section .active{
     border: 1px solid #9a6400 !important;
 }
 
+.rowkorz {
+    background-image: url("bg.jpg") !important;
+    height: 550px;
+}
+
+.rowkorz1 {
+    background-image: url("bg.jpg") !important;
+    height: 750px;
+}
+
+.rowkorz2 {
+    background-image: url("bg.jpg") !important;
+    height: 950px;
+}
+
+.rowcard {
+    background-image: url("555.jpg") !important;
+    height: 550px;
+}
+
+.vkorz{
+    background-image: url("5555.jpg") !important;
+    height: 550px;
+}
+
+.vkorz1{
+    background-image: url("5555.jpg") !important;
+    height: 530px;
+}
+
+.rowindus, .osnstr {
+    background-color: #4a1e05 !important;
+    height: 550px;
+}
+
+ .osnstr1{
+    background-color: #4a1e05 !important;
+    height: 300px;
+}
+
+
 .image{
     width: 30%;
     float: left;
@@ -46,4 +87,394 @@ h4{
 .btn_font {
     font-size: 13px !important;
     font-weight:bold !important;
+    height: 30px;
 }
+
+.corz{
+    margin-top: 10px;
+}
+.oplcard{
+  display: flex;
+  flex-direction: row;
+}
+.nb{
+    width: 70px;
+    padding-left: 20px;
+}
+.csum{
+    margin-left: 40px;
+}
+
+.corz1 {
+    width: 100px !important;
+    border: hidden;
+    font-weight: bold;
+}
+.corz11 {
+    width: 50px !important;
+    font-weight: bold;
+    border: 1px solid black !important;
+}
+
+
+
+.thtable, .vnkorz, .spkorz, .corz1, .mynavbar, .itpok, .card{
+    background-color:  #f1edc7 !important;
+}
+
+.card-header{
+    background-color: #bebbc0 !important;
+    font-weight: bold;
+}
+
+.btnprodkorz{
+    background-color: #8f8f92;
+}
+
+.btnprodkorz1{
+    margin-bottom: 20px;
+
+}
+
+.mynavbar{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.ppol{
+    color: white;
+    font-size: 20px;
+}
+
+.vsetov{
+    color: white;
+}
+
+.oplkorz{
+    width: 500px;
+}
+
+.podp{
+    color: #3b1616;
+}
+
+.edpr{
+    margin-bottom: 5px;
+    height: 60px;
+}
+
+.viewkorz{
+    width: 1000px;
+}
+
+.strp{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.strp1{
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 20px;
+}
+
+.strp2{
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+
+.strp3{
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.btnp{
+    height: 25px;
+}
+.strp4{
+    margin-bottom: 5px !important;
+    margin-top: 5px  !important;
+}
+
+.osnstr{
+    margin-top: 0 !important;
+    padding-top: 20px;
+}
+
+.osnstr11{
+    margin-top: 0 !important;
+    padding-top: 20px;
+    /*height: 300px;*/
+}
+
+.osnstr111{
+    height: 300px;
+}
+
+.batopl{
+    margin-top: 30px !important;
+}
+
+.hfopl{
+    height: 300px;
+}
+
+.itpok{
+
+    font-weight: bold;
+    font-size: 20px;
+    border:none;
+    width: 100px;
+}
+
+.itpokp{
+    margin-left: 700px;
+    /*font-weight: bold;*/
+    font-size: 20px;
+}
+
+.btnfilt{
+
+    margin-top: 25px;
+}
+
+/* =============================================================================================== */
+/* ========================================= раздел о нас ======================================== */
+/* =============================================================================================== */
+
+/* блок контейнер фото1 раздела "о нас" */
+.bl_cont_foto1_onas {
+    width: 100%;
+    border: 1px solid;
+    border-color: black;
+}
+
+/* блок фото_1 раздела "о нас" */
+.bl_foto1_onas {
+    width: 100%;
+    /*aspect-ratio: 4.5 / 1;*/
+    /*padding: 2px;*/
+    /*background-image: url("img/nhl.jpg");*/
+    /*background-size: 30% 30%;*/
+    /*background-size:auto;*/
+
+     border: 1px solid;
+     border-color: black;
+}
+
+/* блок контейнер текста раздела "о нас" */
+.bl_cont_text_onas {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 2.7 / 1;
+    align-items: center;
+    justify-content:center;
+    background-color:rgb(198, 195, 195);
+
+    /* border: 1px solid;  */
+    /* border-color: black; */
+}
+
+/* блок текст раздела "о нас" */
+.bl_text_onas {
+    color:black;
+    /*font-size: 2vw;*/
+    font-size: 23px;
+    width: 90%;
+    height: 90%;
+    aspect-ratio: 4 / 1;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+
+}
+
+/* блок контейнер видео раздела "о нас" */
+.bl_cont_video_onas {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4.5 / 1;
+    align-items: center;
+    justify-content:center;
+    background-color:rgb(198, 195, 195);
+    margin-bottom: 30px;
+    background-size: 70% ;
+
+    /*border: 1px solid;*/
+    /*border-color: black;*/
+
+}
+
+.bl_otstup_onas {
+    width: 100%;
+    aspect-ratio: 15 / 1;
+    background-color:rgb(198, 195, 195);
+
+}
+
+.onas {
+    background-color:rgb(198, 195, 195);
+}
+
+
+/* ======================================= */
+/* ======  стили для section "comand" ====== */
+/* ======================================= */
+/* общие стили */
+/* body{
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color:rgb(198, 195, 195);
+
+} */
+
+.comand__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    background-color:rgb(198, 195, 195);
+    /* border: 1px solid;
+    border-color: black;  */
+}
+
+.wrap{
+    max-width: 1200px;
+    min-width: 218px;
+    margin: 0 auto;
+
+    /* border: 1px solid;
+    border-color: black;  */
+}
+
+.comand__element{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:baseline;
+
+    margin-bottom: 33px;
+    box-sizing: border-box;
+
+    /* border: 1px solid;
+    border-color: black;  */
+}
+
+.comand__element--img{
+    width: 100%;
+    justify-items: center;
+    margin-top: 50px;
+
+    /* border: 1px solid;
+    border-color: black;  */
+}
+
+.comand__element h1{
+    color: rgb(37, 43, 66);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    margin: 10px 0 5px;
+}
+
+.comand__element--img > img{
+    width: 100%;
+
+}
+
+.comand__element--description{
+
+    color:black;
+    font-size: 100%;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align:center;
+    margin: 0 0 0;
+
+    /* border: 1px solid;
+    border-color: rgb(250, 7, 7);  */
+}
+
+
+/* =============================================== */
+/* ======  конец стили для section "comand" ====== */
+/* =============================================== */
+
+
+/* блок контейнер текста1 раздела "о нас" */
+.bl_cont_text1_onas {
+    display: flex;
+    background-color:rgb(189, 182, 168);
+    width: 100%;
+    aspect-ratio: 5 / 1;
+    align-items: center;
+    justify-content:center;
+}
+
+/* блок текст1 раздела "о нас" */
+.bl_onas_text1 {
+    color:black;
+    font-size: 2vw;
+    width: 55%;
+    height: 90%;
+    aspect-ratio: 4 / 1;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+}
+
+/* блок контейнер mail раздела "о нас" */
+.bl_cont_mail_onas {
+    display: flex;
+    flex-direction:column;
+    background-color:rgb(198, 195, 195);
+    width: 100%;
+    aspect-ratio: 5 / 1;
+    align-items:center;
+    justify-content:center;
+
+    /* border: 1px solid;  */
+    /* border-color: black; */
+}
+
+/* блок параметров input mail раздела "о нас" */
+.email, .name, .telefon, .comment {
+    width: 33%;
+    aspect-ratio: 5 / 1;
+}
+
+/* блок контейнер кнопки input mail раздела "о нас" */
+.bl_cont_butt_add {
+    display: flex;
+    background-color:rgb(198, 195, 195);
+    width: 100%;
+    aspect-ratio: 5 / 1;
+    align-items:center;
+    justify-content:center;
+    /* border: 1px solid;  */
+    /* border-color: black; */
+}
+
+/* блок кнопки input mail раздела "о нас" */
+.butt_add {
+    bottom: 0px;
+    background:grey;
+    height: 50px;
+    width:100px;
+    color:white;
+    font-size: 0.8pc;
+    border: 0px;
+    border-color: white;
+    border-radius: 30px;
+    margin-top: 5px;
+}
+
+/* =============================================================================================== */
+/* ================================== раздел наш хлеб ============================================ */
+/* =============================================================================================== */

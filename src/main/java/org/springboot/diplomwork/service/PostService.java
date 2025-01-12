@@ -90,6 +90,8 @@ public class PostService implements IPostService {
         dbPost.setTitle(post.getTitle());
         dbPost.setContent(post.getContent());
         dbPost.setCategory(post.getCategory());
+        dbPost.setPrice(post.getPrice());
+        dbPost.setOst(post.getOst());
         dbPost.setImage(imageName);
 
         Post updatePost = postRepository.save(dbPost);

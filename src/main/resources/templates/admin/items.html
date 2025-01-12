@@ -5,11 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<section>
-    <div class="container mt-4">
-        <div class="card card-sh">
-            <div class="card-header text-center">
-                <p class="fs-4 mt-4">Список постов</p>
+<section class="rowkorz2">
+    <div class="container mt-4 strp1">
+        <div class="card card-sh strp2">
+            <div class="card-header text-center ">
+                <p class="fs-4 mt-4 strp">Список товаров</p>
                 <th:block th:if="${session.succMsg}">
                     <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
                     <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
@@ -20,8 +20,8 @@
                     <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
                 </th:block>
 
-                <hr>
-                <div class="col-md-12 p-4">
+<!--                <hr>-->
+                <div class="col-md-12 p-4 strp">
                     <form action="/admin/items" method="get">
                         <div class="row">
                             <div class="col-md-10">
@@ -35,22 +35,27 @@
                 </div>
 
             </div>
-            <div class="card-body">
+            <div class="card-body vnkorz">
                 <table class="table">
                     <tr>
                         <th scope="col">N пп</th>
-                        <th scope="col">Картинка</th>
-                        <th scope="col">Название поста</th>
-                        <th scope="col">Категория поста</th>
+                        <th scope="col">Внешний вид товара</th>
+                        <th scope="col">Название товара</th>
+	                    <th scope="col">Цена товара</th>
+	                    <th scope="col">Остаток товара (шт)</th>
+                        <th scope="col">Категория товара</th>
                         <th scope="col">Действие</th>
                     </tr>
                     <tr th:each="p, c : ${posts}">
                         <th th:text="${c.count}"></th>
                         <td><img th:src="@{'/img/post_img/'+${p.image}}" width="100" alt=""></td>
                         <td th:text="${p.title}"></td>
+	                    <td th:text="${p.price}"></td>
+	                    <td th:text="${p.ost}"></td>
                         <td th:text="${p.category}"></td>
+	                    
                         <td>
-                            <a th:href="@{'/admin/editItem/'+${p.id}}" class="btn btn-sm btn-primary">Edit</a>
+                            <a th:href="@{'/admin/editItem/'+${p.id}}" class="btn btn-sm btn-primary btnprodkorz">Edit</a>
                             <a th:href="@{'/admin/deleteItem/'+${p.id}}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>

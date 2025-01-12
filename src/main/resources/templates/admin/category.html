@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<section>
+<section  class="rowkorz">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -22,13 +22,13 @@
                         <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
                     </th:block>
 
-                    <div class="card-body">
+                    <div class="card-body vnkorz">
                         <form action="/admin/saveCategory" method="post">
                             <div class="mb-3">
                                 Введите название категории
                                 <input type="text" name="name" class="form-control">
                             </div>
-                            <button class="btn btn-primary col-md-12">Сохранить</button>
+                            <button class="btn btn-primary col-md-12 btnprodkorz">Сохранить</button>
                         </form>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
             <div class="col-md-8">
                 <div class="card card-sh">
                     <div class="card-header text-center">Просмотр категорий</div>
-                    <div class="card-body">
+                    <div class="card-body vnkorz">
                         <table class="table">
                             <tr>
                                 <th scope="col">Категории</th>
@@ -45,7 +45,7 @@
                             <tr th:each="cat : ${categories}">
                                 <td th:text="${cat.name}">Название категории</td>
                                 <td>
-                                    <a th:href="@{'/admin/loadEditCategory/'+${cat.id}}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a th:href="@{'/admin/loadEditCategory/'+${cat.id}}" class="btn btn-primary btn-sm btnprodkorz">Edit</a>
                                     <a th:href="@{'/admin/deleteCategory/'+${cat.id}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>

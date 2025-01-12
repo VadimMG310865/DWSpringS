@@ -5,12 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<section>
+<section class="rowkorz">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card card-sh">
-                    <div class="card-header text-center fs-4">Редактирование поста
+                    <div class="card-header text-center fs-4">Редактирование товара
+	                    
                         <th:block th:if="${session.succMsg}">
                             <p th:text="${session.succMsg}" class="text-success fw-bold text-center mt-4"></p>
                             <th:block th:text="${@userService.removeSessionMessage()}"></th:block>
@@ -23,24 +24,36 @@
 
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body vnkorz">
                         <form action="/admin/updatePost" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" th:value="${post.id}">
-                            <div class="mb-3">
-                                Измените заголовок <input type="text" name="title" th:value="${post.title}" class="form-control">
+                            <div class="mb-3 edpr">
+                                Измените заголовок
+	                            <input type="text" name="title" th:value="${post.title}" class="form-control">
                             </div>
-                            <div class="mb-3">
+	                        
+	                        <div class="mb-3 edpr">
+		                        Измените цену товара
+		                        <input type="text" name="price" th:value="${post.price}" class="form-control">
+	                        </div>
+	                        
+	                        <div class="mb-3 edpr">
+		                        Измените остаток товара
+		                        <input type="text" name="ost" th:value="${post.ost}" class="form-control">
+	                        </div>
+	                        
+                            <div class="mb-3 edpr">
                                 Измените содержание
-                                <textarea name="content" cols="" rows="3" class="form-control">[[${post.content}]]</textarea>
+                                <textarea name="content" cols="" rows="1" class="form-control">[[${post.content}]]</textarea>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 edpr">
                                 Измените категорию
                                 <select name="category" class="form-control">
                                     <option>[[${post.category}]]</option>
                                     <option th:each="c:${categories}" th:text="${c.name}"></option>
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 edpr">
                                 Измените изображение
                                 <input type="file" name="file" class="form-control">
                             </div>
@@ -49,7 +62,7 @@
 <!--                                <img th:src="@{'/img/post_img/1_1.jpg'}" alt="" width="200">-->
 
                             </div>
-                            <button class="btn btn-primary col-md-12">Сохранить</button>
+                            <button class="btn btn-primary col-md-12 btnprodkorz">Сохранить</button>
                         </form>
                     </div>
                 </div>
